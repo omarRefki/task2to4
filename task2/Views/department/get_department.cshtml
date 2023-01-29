@@ -1,0 +1,24 @@
+﻿@{
+    int index = 1;
+    int index1 = 1;
+}
+
+@model department
+
+<h1>Department Data:</h1>
+<br />
+<h4>Name: @Model.DName</h4>
+
+@foreach (var deptLocation in Model.DLocations)
+{
+    <h4>Location @(index++) : @deptLocation.Dlocation</h4>
+
+}
+<h4>Departments Projects:</h4>
+@foreach (var project in Model.Projects)
+{
+    <h4>Project @(index1++):</h4>
+    <h6>Project Name: @project.Name</h6>
+    <h6>Project Location: @project.location</h6>
+}
+<a href="/workOnProject/AddEmployees" class="btn btn-success">add new project</a>

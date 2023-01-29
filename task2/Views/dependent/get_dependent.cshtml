@@ -1,0 +1,37 @@
+﻿@{
+    int index = 1;
+}
+
+@model List<dependent>
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Sex</th>
+            <th>BirthDate</th>
+            <th>Relationship</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var dependent in Model)
+        {
+            <tr>
+                <td>@(index++)</td>
+                <td>@dependent.name</td>
+                <td>@dependent.sex</td>
+                <td>@dependent.date</td>
+                <td>@dependent.relationship</td>
+                <td><a href="/Dependent/Edit/@dependent.name">Edit</a></td>
+                <td><a href="/Dependent/Delete/@dependent.name">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+
+    <a href="/dependent/addForm" class="btn btn-success">Add</a>
+
+</table>
+
+<h6>@TempData["AddMsg"]</h6>

@@ -1,0 +1,50 @@
+﻿@model employee;
+<form action="/employee/afteredit" class="form-control">
+
+    <table>
+        <tr>
+            <th> <label for="first-name">First Name:</label></th>
+            <th><input type="text" id="first-name" name="Fname" value="@Model.Fname" class="form-control"></th>
+        </tr>
+        <tr>
+            <th><label for="last-name">Last Name:</label></th>
+            <th><input type="text" id="last-name" name="Lname" value="@Model.Lname" class="form-control"></th>
+        </tr>
+        <tr>
+            <th> <label for="ssn">SSN:</label></th>
+            <th><input type="hidden" id="ssn" name="SSN" value="@Model.SSN" class="form-control"></th>
+        </tr>
+        <tr>
+            <th><label for="salary">Salary:</label></th>
+            <th> <input type="text" id="salary" name="salary" value="@Model.salary" class="form-control"></th>
+        </tr>
+        <tr>
+            <th> <label for="address">Address:</label></th>
+            <th> <input type="text" id="address" name="address" value="@Model.address" class="form-control"><br></th>
+        </tr>
+        <tr>
+            <th>
+                <label for="super">SuperVisor</label>
+            </th>
+            <th>
+                <select name="Superssn" id="super" class="form-control">
+                    <option value="">select supervisor</option>
+
+                    @foreach (var item in ViewBag.emp)
+                    {
+                        @if (item.SSN == Model.SSN)
+                        {
+                            <option selected value="@item.SSN">@item.Fname @item.Lname</option>
+
+                        }
+                        <option value="@item.SSN">@item.Fname @item.Lname</option>
+                    }
+                </select>
+            </th>
+
+        </tr>
+
+    </table>
+
+    <input type="submit" value="Submit" class="btn btn-success">
+</form>

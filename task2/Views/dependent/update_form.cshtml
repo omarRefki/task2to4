@@ -1,0 +1,28 @@
+﻿<h1>update form</h1>
+
+@model dependent
+
+<form action="/dependents/AfterUpdate" class="form-control">
+
+    <table>
+        <th><input type="hidden" value="@Model.EmployeeSSN" id="name" name="EmployeeSSN" class="form-control"></th>
+        <tr>
+            <th> <label for="name">First Name:</label></th>
+            <th><input type="text" value="@Model.name" id="name" name="name" class="form-control"></th>
+        </tr>
+        <tr>
+            <th><label for="last-name">Sex:</label></th>
+            <th><input type="text" value="@Model.sex" id="sex" name="sex" class="form-control"></th>
+        </tr>
+        <tr>
+            <th><label for="last-name">B DATE</label></th>
+            <th><input type="text" value="@Model.date" id="Bdate" name="Bdate" class="form-control"></th>
+        </tr>
+        <tr>
+            <th> <label for="ssn">relationship:</label></th>
+            <th><input type="text" value="@Model.relationship" id="relationship" name="relationship" class="form-control"></th>
+        </tr>
+    </table>
+
+    <input type="submit" value="Submit" class="btn btn-success">
+</form>

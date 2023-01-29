@@ -1,0 +1,26 @@
+﻿@model List<project>
+
+<form action="/workOnProject/afterAdd" class="form-control">
+    <label>Choose Project</label>
+    <select id="projNum" name="projects" class="form-control">
+        <option value="">Choose Project</option>
+        @foreach (var project in Model)
+        {
+            <option value="@project.Pnumber">@project.Name</option>
+        }
+    </select>
+
+    <label>Choose Employees</label>
+    <select id="SSN" name="Employees"class="form-control">
+        <option value="">Choose Employees</option>
+        @foreach (var employee in ViewBag.emps)
+        {
+            <option value="@employee.SSN">@(employee.Fname + " " + employee.Lname)</option>
+        }
+    </select>
+
+    <label>Hours</label>
+    <input id="hour" name="hour" type="text" class="form-control" />
+
+    <input type="submit" value="Add" class="btn btn-success"/>
+</form>
