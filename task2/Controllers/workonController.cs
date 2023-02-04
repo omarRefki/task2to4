@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using task2.Models;
 
@@ -42,6 +43,30 @@ namespace task2.Controllers
             ViewBag.mgrSSN = (int)HttpContext.Session.GetInt32("SSN");
 
             return View("return_page",worksOnProject1);
+        }
+
+        public IActionResult Edit()
+        {
+            List<employee> employees = DB.employees.ToList();
+            ViewBag.employees = new SelectList(employees, "SSN", "Fname");
+            return View();
+        }
+        public IActionResult Edit_emp(int id)
+        {
+            List<project>? projects = DB.WorkOns.Include(w => w.Project).Where(w => w.ESSN == id).Select(w => w.Project).ToList();
+            ViewBag.projects = new SelectList(projects, "Pnumber", "Name");
+            if (projects.Count > 0)
+            {
+                workon worksOnProject = new workon();
+                return PartialView("_ProjectsList");
+            }
+            return PartialView("_ProjectsList");
+        }
+
+        public IActionResult Edit_emp_proj(int id, int Pnum)
+        {
+            workon? worksOnProject = DB.WorkOns.SingleOrDefault(w => w.ESSN == id && w.Pnum == Pnum);
+            return PartialView("_hour", worksOnProject);
         }
     }
 }

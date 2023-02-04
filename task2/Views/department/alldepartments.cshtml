@@ -1,0 +1,32 @@
+﻿@model List<department>
+
+@{
+    int index = 1;
+}
+
+<div>
+    <div>
+        <a class="btn btn-danger" asp-action="addform" asp-controller="department">NEW Department</a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="col-1">#</th>
+                <th class="col-8">Name</th>
+                <th class="col-3">Actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>@(index++)</th>
+                    <td>@item.DName</td>
+
+                    <td><a class="btn btn-info" asp-controller="department" asp-action="details" asp-route-id="@item.Dnum">Details</a> <a class="btn btn-primary" asp-controller="department" asp-action="editform" asp-route-id="@item.Dnum">Edit</a> <a class="btn btn-danger" asp-controller="department" asp-action="delete" asp-route-id="@item.Dnum">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

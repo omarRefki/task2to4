@@ -1,0 +1,51 @@
+﻿@model VMproject;
+<form asp-controller="Project" asp-action="add" method="post">
+
+    <table>
+        <tr>
+            <th> <label asp-for="Name"></label></th>
+            <th><input asp-for="Name"></th>
+            <th><span asp-validation-for="Name" class="text-danger"></span></th>
+
+        </tr>
+        <tr>
+            <th>@Html.LabelFor(x=>x.Pnumber)</th>
+            <th>@Html.TextBoxFor(x=>x.Pnumber)</th>
+            <th><label asp-for="Pnumber"></label></th>
+            <th><input asp-for="Pnumber"></th>
+            <th><span asp-validation-for="Pnumber " class="text-danger"></span></th>
+        </tr>
+        <tr>
+            <th>@Html.LabelFor(x=>x.location)</th></th>
+            <th>@Html.TextBoxFor(x=>x.location)</th>
+            <th><label asp-for="location"></label></th>
+            <th><input asp-for="location"></th>
+            <th><span asp-validation-for="location" class="text-danger"></span></th>
+
+        </tr>
+        <tr>
+            <th>
+                <label for="super">SuperVisor</label>
+            </th>
+            <th>
+                <select name="DepartmentDnum" id="">
+                    <option value="">select department</option>
+                    @foreach (var item in ViewBag.department)
+                    {
+                        <option value="@item.Dnum">@item.DName</option>
+                    }
+                </select>
+            </th>
+        </tr>
+            <th><label asp-for="ConfirmLocation"></label></th>
+            <th><input asp-for="ConfirmLocation"></th>
+            <th><span asp-validation-for="ConfirmLocation" class="text-danger"></span></th>
+
+        </tr>
+    </table>
+    <input type="submit" value="submit">
+</form>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>

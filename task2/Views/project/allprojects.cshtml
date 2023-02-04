@@ -1,0 +1,27 @@
+﻿@model List<project>
+
+<div>
+    <a class="btn btn-success" href="/project/addform">NEW project</a>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="col-1">#</th>
+            <th class="col-8">Project name </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @{
+            var index = 1;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@(index++)</th>
+                <td>@item.Name  </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
